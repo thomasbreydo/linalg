@@ -19,14 +19,14 @@ is an eigenvalue of $T,$ then so is $\overline\lambda.$
 
 \vspace{0.5in}
 
-\newcommand{\basis}{v_1,\ldots,v_n} 
+\newcommand{\basis}{v_1,\ldots,v_n}
 
 \textbf{Solution:} Let $\basis$ be a basis of $V$ for which
 \begin{align*}
     \SM(T)=\begin{pmatrix}
-        A_{11} & & \\
-               & \ddots & \\
-               & & A_{nn}
+        A_{11} & \cdots & A_{1n} \\
+        \vdots & \ddots &\vdots \\
+        A_{n1}    &\cdots & A_{nn}
     \end{pmatrix}
 \end{align*}
 where $A_{ij}\in\R.$ Next, suppose that $v$ is an eigenvector of $\lambda$ and that
@@ -40,10 +40,11 @@ where $A_{ij}\in\R.$ Next, suppose that $v$ is an eigenvector of $\lambda$ and t
 where $c_i\in\C.$ It follows that $Tv=\lambda v.$ Or, equivalently,
 \begin{align*}
     \begin{pmatrix}
-        A_{11} & & \\
-               & \ddots & \\
-               & & A_{nn}
-    \end{pmatrix}\begin{pmatrix}
+        A_{11} & \cdots & A_{1n} \\
+        \vdots & \ddots &\vdots \\
+        A_{n1}    &\cdots & A_{nn}
+    \end{pmatrix}
+    \begin{pmatrix}
         c_1\\
         \vdots\\
         c_n\\
@@ -71,10 +72,11 @@ Taking the complex conjugate on both sides, since $A_{ij}\in\R,$
 It follows that,
 \begin{align*}
     \begin{pmatrix}
-        A_{11} & & \\
-               & \ddots & \\
-               & & A_{nn}
-    \end{pmatrix}\begin{pmatrix}
+        A_{11} & \cdots & A_{1n} \\
+        \vdots & \ddots &\vdots \\
+        A_{n1}    &\cdots & A_{nn}
+    \end{pmatrix}
+    \begin{pmatrix}
         \overline{c_1}\\
         \vdots\\
         \overline{c_n}\\
@@ -85,9 +87,17 @@ It follows that,
         \overline{\lambda}\overline{c_n}\\
     \end{pmatrix}.
 \end{align*}
-Equivalently,
+Letting
 \begin{align*}
-    T\overline v=\overline\lambda\overline v
+    \overline v = \begin{pmatrix}
+        \overline{c_1}\\
+        \vdots\\
+        \overline{c_n}
+    \end{pmatrix},
+\end{align*}
+we see that
+\begin{align*}
+    T\overline v=\overline\lambda\overline v.
 \end{align*}
 Since $v\ne0,$ we know that $\overline v\ne 0.$ Thus, $\overline\lambda$
 is an eigenvalue of $V$.\qed
