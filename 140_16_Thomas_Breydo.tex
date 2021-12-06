@@ -1,0 +1,100 @@
+\documentclass{amsart}
+\usepackage{thomas}
+
+\newcommand{\pagenum}{140}
+\newcommand{\probnum}{16}
+
+\title{\pagenum.\probnum}
+\author{Thomas\ Breydo}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\textbf{Problem:} Suppose $V$ is a complex vector space,
+$T\in\SL(V),$ and the matrix of $T$ with respect
+to a basis of $V$ contains only real entries. Show that if $\lambda$
+is an eigenvalue of $T,$ then so is $\overline\lambda.$
+
+\vspace{0.5in}
+
+\newcommand{\basis}{v_1,\ldots,v_n} 
+
+\textbf{Solution:} Let $\basis$ be a basis of $V$ for which
+\begin{align*}
+    \SM(T)=\begin{pmatrix}
+        A_{11} & & \\
+               & \ddots & \\
+               & & A_{nn}
+    \end{pmatrix}
+\end{align*}
+where $A_{ij}\in\R.$ Next, suppose that $v$ is an eigenvector of $\lambda$ and that
+\begin{align*}
+    \SM(v)=\begin{pmatrix}
+        c_1\\
+        \vdots\\
+        c_n\\
+    \end{pmatrix}
+\end{align*}
+where $c_i\in\C.$ It follows that $Tv=\lambda v.$ Or, equivalently,
+\begin{align*}
+    \begin{pmatrix}
+        A_{11} & & \\
+               & \ddots & \\
+               & & A_{nn}
+    \end{pmatrix}\begin{pmatrix}
+        c_1\\
+        \vdots\\
+        c_n\\
+    \end{pmatrix}
+    =\begin{pmatrix}
+        \lambda c_1\\
+        \vdots\\
+        \lambda c_n\\
+    \end{pmatrix}.
+\end{align*}
+Thus,
+\begin{align*}
+    A_{11}c_1+\cdots+A_{1n}c_n&=\lambda c_1\\
+    A_{21}c_1+\cdots+A_{2n}c_n&=\lambda c_2\\
+    \vdots\\
+    A_{n1}c_1+\cdots+A_{nn}c_n&=\lambda c_n
+\end{align*}
+Taking the complex conjugate on both sides, since $A_{ij}\in\R,$
+\begin{align*}
+    A_{11}\overline{c_1}+\cdots+A_{1n}\overline{c_n}&=\overline{\lambda}\overline{c_1}\\
+    A_{21}\overline{c_1}+\cdots+A_{2n}\overline{c_n}&=\overline{\lambda}\overline{c_2}\\
+    \vdots\\
+    A_{n1}\overline{c_1}+\cdots+A_{nn}\overline{c_n}&=\overline{\lambda}\overline{c_n}
+\end{align*}
+It follows that,
+\begin{align*}
+    \begin{pmatrix}
+        A_{11} & & \\
+               & \ddots & \\
+               & & A_{nn}
+    \end{pmatrix}\begin{pmatrix}
+        \overline{c_1}\\
+        \vdots\\
+        \overline{c_n}\\
+    \end{pmatrix}
+    =\begin{pmatrix}
+        \overline{\lambda}\overline{c_1}\\
+        \vdots\\
+        \overline{\lambda}\overline{c_n}\\
+    \end{pmatrix}.
+\end{align*}
+Equivalently,
+\begin{align*}
+    T\overline v=\overline\lambda\overline v
+\end{align*}
+Since $v\ne0,$ we know that $\overline v\ne 0.$ Thus, $\overline\lambda$
+is an eigenvalue of $V$.\qed
+
+\vspace{0.5in}
+
+\textbf{Source code:} \href{https://github.com/thomasbreydo/linalg/\pagenum_\probnum_Thomas_Breydo.tex}
+{Click here to open the source code on GitHub.}
+
+\end{document}
