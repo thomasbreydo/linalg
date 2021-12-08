@@ -1,0 +1,58 @@
+\documentclass{amsart}
+\usepackage{thomas}
+
+\newcommand{\pagenum}{140}
+\newcommand{\probnum}{30}
+
+\title{\pagenum.\probnum}
+\author{Thomas\ Breydo}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{problem*}
+Suppose $T\in\SL(\R^3)$ and $-4,5,$ and $\sqrt 7$
+are eigenvalues of $T.$ Prove that there exists $x\in\R^3$
+such that $Tx-9x=(-4,5,\sqrt 7).$
+\end{problem*}
+
+\vspace{0.5in}
+
+\begin{claim*}
+9 is not an eigenvalue of $T.$
+\end{claim*}
+\begin{proof}
+$T$ can have at most $\dim\R^3=3$ eigenvalues by \textit{5.13},
+and we already have three distinct eigenvalues: $-4,5,$ and
+$\sqrt 7$.
+\end{proof}
+
+\begin{claim*}
+$T-9I$ is invertible.
+\end{claim*}
+\begin{proof}
+Otherwise, 9 would be an eigenvalue of $T$ by \textit{5.6}.
+\end{proof}
+
+\begin{claim*}
+    $x=(T-9I)^{-1}\big((-4,5,\sqrt 7)\big)$ works.
+\end{claim*}
+\begin{proof} Note that
+\begin{align*} 
+    Tx-9x &= (T-9I)x \\
+          &= (-4,5,\sqrt 7)
+\end{align*}
+as desired.
+\end{proof}
+
+\vspace{0.5in}
+
+\begin{note*}
+You can view the source code for this solution
+\href{https://github.com/thomasbreydo/linalg/blob/main/\pagenum_\probnum_Thomas_Breydo.tex}
+{here}.
+\end{note*}
+
+\end{document}
