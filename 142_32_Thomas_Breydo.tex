@@ -1,0 +1,64 @@
+\documentclass{amsart}
+\usepackage{thomas}
+
+\newcommand{\pagenum}{142}
+\newcommand{\probnum}{32}
+
+\title{\pagenum.\probnum}
+\author{Thomas\ Breydo}
+
+\begin{document}
+
+\maketitle
+
+\begin{problem*}
+Suppose $\lambda_1,\dots,\lambda_n$ is a list of distinct real numbers.
+Prove that the list $e^{\lambda_1 x},\ldots,e^{\lambda_n x}$
+is linearly independent in the vector space of real-valued
+functions on $\R$ (also known as $\R^\R$).
+\end{problem*}
+
+\vspace{0.5in}
+
+As suggested in the hint, let
+$V=\vspan\left(e^{\lambda_1 x},\ldots,e^{\lambda_n x}\right)$
+and define $T\in\SL(V)$ by $T(f)=f'.$
+
+\begin{claim*}
+The eigenvalues of $T$ are $\lambda_1,\ldots,\lambda_n,$ with
+corresponding eigenvetors $e^{\lambda_1 x},\ldots,e^{\lambda_n x}.$
+\end{claim*}
+\begin{proof}
+First, note that
+\begin{align*}
+    T\left(e^{\lambda_i x}\right)
+    &= \left(e^{\lambda_i x}\right)' \\
+    &=\lambda_i e^{\lambda_i x}
+\end{align*}
+and thus $\lambda_1,\ldots,\lambda_n$ are all eigenvalues of $T.$
+Since $V$ is at most $n$-dimesional, there can be no other
+eigenvalues of $T.$
+\end{proof}
+
+\begin{claim*}
+The list $e^{\lambda_1 x},\ldots,e^{\lambda_n x}$ is linearly
+independent in $V.$
+\end{claim*}
+\begin{proof}
+Since $e^{\lambda_1x},\ldots,e^{\lambda_nx}$ are eigenvectors corresponding
+to distinct eigenvaues, they must be linearly independent.
+\end{proof}
+
+Since $V$ is a subspace of $\R^\R$,
+it follows that $e^{\lambda_1 x},\ldots,e^{\lambda_n x}$
+is linearly independent in $\R^\R$.
+
+\vspace{0.5in}
+
+\begin{note*}
+You can view the source code for this solution
+\href{https://github.com/thomasbreydo/linalg/blob/main/\pagenum_\probnum_Thomas_Breydo.tex}
+{here}.
+\end{note*}
+
+\end{document}
