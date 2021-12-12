@@ -1,0 +1,94 @@
+\documentclass{amsart}
+\usepackage{thomas} % my style file, https://git.io/thomas.sty
+
+
+\newcommand{\pagenum}{153}
+\newcommand{\probnum}{7}
+
+\title{\pagenum.\probnum}
+\author{Thomas\ Breydo}
+
+\begin{document}
+
+\maketitle
+
+\begin{problem*}
+Suppose $T\in\SL(V).$ Prove that $9$ is an eigenvalue of $T^2$
+if and only if $3$ or $-3$ is an eigenvalue of $T.$
+\end{problem*}
+
+\vspace{0.5in}
+
+
+\begin{claim}
+\label{impl}
+If $\lambda\in\F$ is an eigenvalue of $T,$ then $\lambda^2$ is an
+eigenvalue of $T^2.$
+\end{claim}
+\begin{proof}
+Since $\lambda$ is an eigenvalue of $T,$ there exists
+a $v\in V$ such that $v\ne 0$ and 
+\begin{align*}
+    Tv=\lambda v.
+\end{align*}
+For this $v,$
+\begin{align*}
+    T^2(v)&=T(Tv)\\
+          &=T(\lambda v)\\
+          &=\lambda^2 v.
+\end{align*}
+Thus, $\lambda^2$ is an eigenvalue of $T^2.$
+\end{proof}
+
+
+
+\begin{claim}
+\label{conv}
+If $\mu\in\F$ is an eigenvalue of $T^2,$ then $\sqrt\mu$ or $-\sqrt\mu$
+is an eigenvalue of $T$ (assuming that $\sqrt\mu\in\F$).
+\end{claim}
+\begin{proof}
+Since $\mu$ is an eigenvalue of $T^2,$ we know that
+$T^2-\mu I$ is not injective. Thus, there exists
+a $v\in V$ such that $v\ne0$ and
+\begin{align*}
+    (T^2-\mu I)v=0.
+\end{align*}
+Since
+\begin{align*}
+    (T-\sqrt\mu I)(T+\sqrt\mu I)
+    &= T^2+T\cdot\sqrt\mu I-\sqrt\mu I\cdot T+(\sqrt\mu I)^2 \\
+    &= T^2+\sqrt\mu T-\sqrt\mu T+\left(\sqrt\mu\right)^2 I \\
+    &= T^2+\mu I,
+\end{align*}
+it follows that
+\begin{align*}
+    (T-\sqrt\mu I)\underbrace{(T+\sqrt\mu I)v}_w=0.
+\end{align*}
+Consider $w=(T+\sqrt\mu I)v$.
+
+\begin{itemize}
+\item If $w=0,$ then $(T+\sqrt\mu I)v=0\implies T+\sqrt\mu I$ is
+    not injective. Thus, $-\sqrt\mu$ is an eigenvalue of $T.$
+
+\item If $w\ne0,$ then $(T-\sqrt\mu I)w=0\implies T-\sqrt\mu I$ is
+    not injective. Thus, $\sqrt\mu$ is an eigenvalue of $T.$\qedhere
+\end{itemize}
+\end{proof}
+
+These two claims suffice. It follows from
+\textsf{\textbf{Claim \ref{impl}}}  that if $3$ or $-3$ is an
+eigenvalue of $T,$ then $9$ is an eigenvalue of $T^2$. It follows from
+\textsf{\textbf{Claim \ref{conv}}} that if $9$ is an eigenvalue
+of $T^2,$
+then $3$ or $-3$ is an eigenvalue $T.$
+
+\vspace{0.5in}
+
+\begin{note*}
+You can view the source code for this solution
+\href{https://github.com/thomasbreydo/linalg/blob/main/\pagenum_\probnum_Thomas_Breydo.tex}
+{here}.
+\end{note*}
+
+\end{document}
