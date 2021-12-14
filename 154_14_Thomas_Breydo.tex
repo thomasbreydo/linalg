@@ -1,0 +1,54 @@
+\documentclass{amsart}
+\usepackage{thomas} % my style file, https://git.io/thomas.sty
+
+
+\newcommand{\pagenum}{154}
+\newcommand{\probnum}{14}
+
+\title{\pagenum.\probnum}
+\author{Thomas\ Breydo}
+
+\begin{document}
+
+\maketitle
+
+\begin{problem*}
+Give an example of an operator whose matrix with respect to some basis
+contains only $0$'s on the diagonal, but the operator is invertible.
+\end{problem*}
+
+\vspace{0.5in}
+
+\begin{claim*}
+    In $\R^2$, reflection across $y=x$ is invertible but contains
+    only $0$'s on the diagonal with respect to the standard basis
+    of $\R^2.$
+\end{claim*}
+\begin{proof}
+Define $T\in\SL(\R^2)$ by
+\begin{align*}
+    T\big((x, y)\big)=(y,x).
+\end{align*}
+Since $T\big((1,0)\big)=(0,1)$ and $T\big((0,1)\big)=(0,1)$,
+\begin{align*}
+    \SM(T)=\begin{pmatrix}
+        0 & 1 \\
+        1 & 0
+    \end{pmatrix}.
+\end{align*}
+But, $T$ is invertible, since $T^2=I$:
+\begin{align*}
+    T^2\big((x,y)\big)&=T\big((y,x)\big)\\
+                      &=(x,y).
+\end{align*}
+\end{proof}
+
+\vspace{0.5in}
+
+\begin{note*}
+You can view the source code for this solution
+\href{https://github.com/thomasbreydo/linalg/blob/main/\pagenum_\probnum_Thomas_Breydo.tex}
+{here}.
+\end{note*}
+
+\end{document}
