@@ -1,0 +1,77 @@
+\documentclass{amsart}
+\usepackage{thomas} % my style file, https://git.io/thomas.sty
+
+
+\newcommand{\pagenum}{175}
+\newcommand{\probnum}{5}
+
+\title{\pagenum.\probnum}
+\author{Thomas\ Breydo}
+
+\begin{document}
+
+\maketitle
+
+\begin{problem*}
+Suppose $T\in\SL(V)$ is such that
+\begin{align*}
+    \norm{Tv}\le\norm{v}
+\end{align*}
+for every $v\in V.$ Prove that $T-\sqrt2I$ is invertible.
+\end{problem*}
+
+\vspace{0.5in}
+
+First, we prove the following claim:
+
+\begin{claim*}
+If $\lambda>1$ is an eigenvalue of $T$ then there exists a $v\in V$ for which
+\begin{align*}
+    \norm{Tv}>\norm{v}.
+\end{align*}
+\end{claim*}
+\begin{proof}
+Take $v\in V$ to be an eigenvector with eigenvalue $\lambda.$ Notice that
+\begin{align*}
+    v\ne0 &\implies \norm{v}\ne0
+\end{align*}
+Multiplying both sides of $\lambda>1$ by $\norm{v},$ we get that
+\begin{align*}
+    \lambda\norm{v} > \norm{v}.
+\end{align*}
+Then, since $Tv=\lambda v,$
+\begin{align*}
+    \norm{Tv} &= \norm{\lambda v} \\
+              &= \lambda\norm{v} \\
+              &> \norm{v}.\qedhere
+\end{align*}
+\end{proof}
+
+\begin{claim*}
+    $T-\sqrt2I$ is invertible.
+\end{claim*}
+\begin{proof}
+Suppose the contrary, that is not invertible.
+Then, $\lambda=\sqrt2$ is a an eigenvalue
+of $T.$ Since $\lambda>1,$ the previous claim tells us that
+there exists a $v\in V$ for which
+\begin{align*}
+    \norm{Tv}>\norm{v}.
+\end{align*}
+Thus it is not true that
+\begin{align*}
+    \norm{Tv}\le\norm{v}
+\end{align*}
+for every $v\in V,$ which is a contradiction.
+So, $T-\sqrt2I$ is not invertible.
+\end{proof}
+
+\vspace{0.5in}
+
+\begin{note*}
+You can view the source code for this solution
+\href{https://github.com/thomasbreydo/linalg/blob/main/\pagenum_\probnum_Thomas_Breydo.tex}
+{here}.
+\end{note*}
+
+\end{document}
