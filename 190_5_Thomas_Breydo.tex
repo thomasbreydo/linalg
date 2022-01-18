@@ -1,0 +1,177 @@
+% code formatting from https://www.overleaf.com/learn/latex/Code_listing 
+\documentclass{amsart}
+\usepackage{thomas} % my style file, https://git.io/thomas.sty
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{1, 1, 1}
+
+
+\newcommand{\pagenum}{190}
+\newcommand{\probnum}{5}
+
+\title{\pagenum.\probnum}
+\author{Thomas\ Breydo}
+
+\begin{document}
+
+\maketitle
+
+\begin{problem*}
+On $\SP_2(\R),$ consider the inner product given by
+\begin{align*}
+    \iprod{p,q}=\int_0^1\!p(x)q(x)\;\mathrm dx.
+\end{align*}
+Apply the Gram--Schmidt Procedure to the basis $1,x,x^2$ to produce an
+orthonormal basis of $\SP_2(\R).$
+\end{problem*}
+
+\vspace{0.5in}
+
+\begin{claim*}
+    We can write code that applies the Procedure.
+\end{claim*}
+\begin{proof}
+Proof by construction, voila:
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\begin{lstlisting}[language=Python]
+def gram_schmidt(vectors: list[Vector]) -> list[Vector]:
+    output = []
+    for v in vectors:
+        next_e = sum([-e.scaled(v * e) for e in output], start=v)
+        output.append(next_e.normalized())
+    return output
+\end{lstlisting}
+\end{proof}
+
+\begin{note*}
+If you're curious about how I implemented the \texttt{Vector} objects
+so that they can be scaled, multiplied, etc, check out
+my code \href{https://github.com/thomasbreydo/pylinearalg/blob/main/pylinearalg/vector.py}
+{here}.
+\end{note*}
+
+\vspace{0.5in}
+
+\begin{claim*}
+We can write a function that computes
+\begin{align*}
+    \int_0^1{\!p(x)q(x)\;\mathrm dx}.
+\end{align*}
+\end{claim*}
+
+\begin{proof}
+Suppose
+\begin{align*}
+    p(x) &= a_0+a_1x+\dots+a_nx^n \\
+    q(x) &= b_0+b_1x+\dots+b_nx^n.
+\end{align*}
+Then,
+\begin{align*}
+    \int_0^1{\!p(x)q(x)\;\mathrm dx} &=
+    \int_0^1{\!(a_0+a_1x+\dots+a_nx^n)
+    (b_0+b_1x+\dots+b_nx^n)\;\mathrm dx}\\
+    &= 
+    \int_0^1{\! a_0b_0 \;\mathrm dx}
+    +
+    \int_0^1{\! a_0b_1x \;\mathrm dx}
+    +\dots+
+    \int_0^1{\! a_0b_nx^n \;\mathrm dx}
+    \\
+    &+
+    \int_0^1{\! a_1b_0 \;\mathrm dx}
+    +
+    \int_0^1{\! a_1b_1x \;\mathrm dx}
+    +\dots+
+    \int_0^1{\! a_1b_nx^n \;\mathrm dx}
+    \\
+    &\qquad\qquad\qquad\qquad\qquad\vdots\\
+    &+
+    \int_0^1{\! a_nb_0 \;\mathrm dx}
+    +
+    \int_0^1{\! a_nb_1x \;\mathrm dx}
+    +\dots+
+    \int_0^1{\! a_nb_nx^n \;\mathrm dx}.
+\end{align*}
+Each monomial is easy to integrate, since
+\begin{align*}
+    \int_0^1{\! a_ix^ib_jx^j \;\mathrm dx}
+    &= a_ib_j\int_0^1{\! x^{i+j} \;\mathrm dx} \\
+    &= \left.\frac{a_ib_j}{i+j+1}x^{i+j+1}\right|^1_0\\
+    &=\frac{a_ib_j}{i+j+1}.
+\end{align*}
+You can see this fact used on line 7 below.
+
+\lstset{style=mystyle}
+\begin{lstlisting}[language=Python]
+def inner_product(p, q):
+    """Evaluate the definite integral from 0 to 1 of pq."""
+    total = 0
+    for exp1, coef1 in enumerate(p.components):
+        for exp2, coef2 in enumerate(q.components):
+            # integral of (coef1)x^exp1 + (coef2)x^exp2 is:
+            total += coef1 * coef2 / (exp1 + exp2 + 1)
+    return total
+\end{lstlisting}
+\end{proof}
+
+\begin{claim*}
+The orthogonal basis is
+\begin{align*}
+    e_1 &= 1 \\
+    e_2 &\approx -1.73+3.456x \\
+    e_3 &\approx 2.23-13.42x+13.42x^2.
+\end{align*}
+\end{claim*}
+\begin{proof}
+The following snippet of code produces the desired result.
+You can confirm the orthagonality of these polynomials
+by looking at \href{https://www.desmos.com/calculator/3z6r9ky3wr}
+{this} Desmos project.
+
+\lstset{style=mystyle}
+\begin{lstlisting}[language=Python]
+basis = [BasisVector("1"), BasisVector("x"), BasisVector("x^2")]
+V = VectorSpace(basis, inner_product)
+
+u = Vector([1, 0, 0], space=V)
+v = Vector([0, 1, 0], space=V)
+w = Vector([0, 0, 1], space=V)
+
+for vec in gram_schmidt([u, v, w]):
+    print(vec.normalized())
+\end{lstlisting}
+\end{proof}
+
+
+\begin{note*}
+You can view the source code for this solution
+\href{https://github.com/thomasbreydo/linalg/blob/main/\pagenum_\probnum_Thomas_Breydo.tex}
+{here}.
+\end{note*}
+
+\end{document}
