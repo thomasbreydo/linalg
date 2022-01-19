@@ -157,13 +157,12 @@ by looking at \href{https://www.desmos.com/calculator/3z6r9ky3wr}
 \begin{lstlisting}[language=Python]
 basis = [BasisVector("1"), BasisVector("x"), BasisVector("x^2")]
 V = VectorSpace(basis, inner_product)
-
 u = Vector([1, 0, 0], space=V)
 v = Vector([0, 1, 0], space=V)
 w = Vector([0, 0, 1], space=V)
 
 for vec in gram_schmidt([u, v, w]):
-    print(vec.normalized())
+    print(vec)
 \end{lstlisting}
 \end{proof}
 
