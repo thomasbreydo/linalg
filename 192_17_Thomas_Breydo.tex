@@ -1,0 +1,145 @@
+\documentclass{amsart}
+\usepackage{thomas} % my style file, https://git.io/thomas.sty
+
+
+\newcommand{\pagenum}{190}
+\newcommand{\probnum}{17}
+
+\title{\pagenum.\probnum}
+\author{Thomas\ Breydo}
+
+\begin{document}
+
+\maketitle
+
+\begin{problem*}
+For $u\in V,$ let $\Phi u$ denote the linear functional $V$ defined
+by
+\begin{align*}
+    (\Phi u)(v)=\iprod{v,u}
+\end{align*}
+for $v\in V.$
+
+\begin{enumerate}[label=(\alph*),topsep=2ex,itemsep=2ex]
+    \item Show that if $\F=\R,$ then $\Phi$ is a linear map from $V$
+        to $V'.$ (Recall from Section 3.F that $V'=\SL(V,\F)$
+        and that $V'$ is called the dual space of $V.$)
+
+    \item Show that if $\F=\C$ and $V\ne\{0\}$, then $\Phi$ is not
+        a linear map.
+
+    \item Show that $\Phi$ is injective.
+
+    \item Suppose $\F=\R$ and $V$ is finite-dimensional. Use parts
+        (a) and (c) and a dimension-counting argument (but without
+        using 6.42) to show that $\Phi$ is an isomorphism from
+        $V$ onto $V'.$
+\end{enumerate}
+\end{problem*}
+
+\begin{note*}
+    Part (d) gives an alternative proof of the Reisz Representation
+    Theorem (6.42) when $\F=\R.$ Part (d) also gives a natural
+    isomorphism (meaning that it does not depend on a choice of
+    basis) from a finite-dimensional real inner product space
+    onto its dual space.
+\end{note*}
+
+\vspace{0.5in}
+
+\begin{claim}
+If $\F=\R,$ then $\Phi$ is a linear map from $V$ to $V'.$
+\end{claim}
+\begin{proof}
+Suppose $u_1,u_2\in V.$ Then, the functional $\Phi(u_1+u_2)$ sends
+$v\in V$ to
+\begin{align*}
+    \big(\Phi(u_1+u_2)\big)(v) &= \iprod{v,u_1+u_2} \\
+                     &= \iprod{v,u_1}+\iprod{v,u_2} \\
+                     &= (\Phi u_1)(v)+(\Phi u_2)(v).
+\end{align*}
+Thus, $\Phi$ is additive.
+
+Next, suppose $\lambda\in\F$ and
+$u\in V.$ Then, the functional $\Phi(\lambda u)$ sends
+sends $v\in V$ to
+\begin{align*}
+    \big(\Phi(\lambda u)\big)(v) &= \iprod{v, \lambda u} \\
+                                 &= \overline\lambda\iprod{v, u} \\
+                                 &= \lambda\iprod{v,u} &&(\F=\R) \\
+                                 &= \lambda(\Phi{u})(v).
+\end{align*}
+Thus, $\Phi$ is homogenous. Since it is both additive and homogenous,
+it is linear.
+\end{proof}
+
+\vspace{0.5in}
+
+\begin{claim}
+If $\F=\C$ and $V\ne\{0\},$ then $\Phi$ is not a linear map.
+\end{claim}
+\begin{proof}
+Since $V\ne\{0\},$ there exists a $u\in V$ such that $u\ne 0.$
+We will show that
+\begin{align*}
+\Phi(iu)\ne i\Phi(u),
+\end{align*}
+and thus $\Phi$ is not a linear map. Namely,
+$\Phi(iu)$ and $i\Phi(u)$ send $u$ to two different values:
+\begin{align*}
+    \big(\Phi(iu)\big)(u) &= \iprod{u,iu} \\
+                          &= \overline i\iprod{u,u} \\
+                          &= -i\iprod{u,u},
+\end{align*}
+while
+\begin{align*}
+    \big(i\Phi(u)\big)(u) &= i\big(\Phi(u)\big)(u) \\
+                          &= i\iprod{u,u}.
+\end{align*}
+These are indeed different because $\iprod{u,u}\ne0$ (since $u\ne 0$).
+\end{proof}
+
+\vspace{0.5in}
+
+\begin{claim}
+ $\Phi$ is injective.
+\end{claim}
+\begin{proof}
+Suppose $u\in V$ and $\Phi u$ is the zero map. Then,
+\begin{align*}
+    (\Phi u)(u) = 0.
+\end{align*}
+Since $(\Phi u)(u)=\iprod{u,u},$ the definiteness of the inner
+product implies $u=0.$
+Thus, $\Phi$ is injective.
+\end{proof}
+
+\vspace{0.5in}
+
+\begin{claim}
+    If $\F=\R$ and $V$ is finite-dimensional, then
+    $\Phi$ is an isomorphism from $V$ onto $V'.$
+\end{claim}
+\begin{proof}
+By \textsf{\textbf{Claim 1}} and \textsf{\textbf{Claim 3}},
+$\Phi$ is an injective linear map from $V$ onto $V'.$ Thus,
+\begin{align*}
+    \dim V' &= \dim V \\
+            &= \dim\vrange\Phi+\dim\vnull\Phi \\
+            &= \dim\vrange\Phi.
+\end{align*}
+But if $\dim\vrange\Phi=\dim V'$, then  $\Phi$ must be surjective.
+Since it is both injective and surjective, it is invertible.
+Thus, it is an isomorphism.
+\end{proof}
+
+\vspace{0.5in}
+
+
+\begin{note*}
+You can view the source code for this solution
+\href{https://github.com/thomasbreydo/linalg/blob/main/\pagenum_\probnum_Thomas_Breydo.tex}
+{here}.
+\end{note*}
+
+\end{document}
