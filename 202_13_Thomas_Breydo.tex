@@ -1,0 +1,99 @@
+\documentclass{amsart}
+\usepackage{thomas} % my style file, https://git.io/thomas.sty
+
+
+\newcommand{\pagenum}{202}
+\newcommand{\probnum}{13}
+
+\title{\pagenum.\probnum}
+\author{Thomas\ Breydo}
+
+\begin{document}
+
+\maketitle
+
+\begin{problem*}
+Find $p\in\SP_5(\R)$ that makes
+\begin{align*}
+    cost=\int_{-\pi}^\pi\!\abs{\sin x-p(x)}^2\,\mathrm dx
+\end{align*}
+as small as possible.
+\end{problem*}
+
+\vspace{0.5in}
+
+Consider the vector space $V$ of all continuous functions
+from $-\pi$ to $\pi$, with the inner product
+\begin{align*}
+    \iprod{f,g}=\int_{-\pi}^\pi\! f(x)g(x)\,\mathrm dx.
+\end{align*}
+Let $U=\SP_5(\R),$ and note that $U$ is a subspace of $V.$
+\begin{claim*}
+The optimal $p\in U$ is that which minimizes
+$\norm{\sin x - p(x)}.$
+\end{claim*}
+\begin{proof}
+Note that
+\begin{align*}
+    \norm{\sin x - p(x)} &= \sqrt{\iprod{\sin x-p(x),\sin x-p(x)}} \\
+                         &= \sqrt{
+    \int_{-\pi}^\pi\!(\sin x-p(x))^2\,\mathrm dx
+                         } \\
+                         &= \sqrt{cost},
+\end{align*}
+so minimizing $\norm{\sin x - p(x)}$ minimizes the cost.
+\end{proof}
+
+\begin{claim*}
+The optimal $p\in U$ is $P_U\sin x.$
+\end{claim*}
+\begin{proof}
+    
+By \textit{6.56}, we know that for any $p\in U$
+\begin{align*}
+\norm{\sin x - P_U\sin x}\le \norm{\sin x- p(x)},
+\end{align*}
+and that $p(x)=P_U\sin x$ is the only $p$ for which
+equality holds, minimizing the right-hand side,
+and in turn minimzing $cost$.
+\end{proof}
+
+\newpage
+
+\begin{claim*}
+The optimal $p\in U$ is
+\begin{align*}
+    p(x)=\frac{- 72765 \pi^{2} + 693 \pi^{4} + 654885}
+    {8 \pi^{10}} x^{5}
+    &+ \frac{-363825 - 315 \pi^{4} + 39375 \pi^{2}}
+    {4 \pi^{8}} x^{3} \\
+    &+ \frac{- 16065 \pi^{2}+ 105 \pi^{4} + 155925}{8 \pi^{6}} x
+\end{align*}
+Click \href{https://www.desmos.com/calculator/dldsdtkuav}{here}
+to check out the approximation on Desmos.
+\end{claim*}
+\begin{proof}
+We can apply
+the Gram--Schmidt Procedure to $1,x,x^2,x^3,x^4,x^5$
+to obtain an orthonormal basis of $U.$
+Then, we can compute
+\begin{align*}
+    p(x) &= P_U\sin x \\
+         &= \iprod{e_1,\sin x}e_1+\cdots\iprod{e_6,\sin x}e_6.
+\end{align*}
+
+I expanded my \texttt{pylinearalg} Python package to use \texttt{sympy},
+which can handle ``symbolic integration'' (instead of floating-point
+approximations). You can see the solution script
+\href{https://github.com/thomasbreydo/pylinearalg/blob/main/examples/page202_prob13.py}{here}.
+\end{proof}
+
+\vspace{0.5in}
+
+\begin{note*}
+You can view the source code for this solution
+\href{https://github.com/thomasbreydo/linalg/blob/main/\pagenum_\probnum_Thomas_Breydo.tex}
+{here}.
+\end{note*}
+
+\end{document}
