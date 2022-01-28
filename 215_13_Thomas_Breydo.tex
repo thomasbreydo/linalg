@@ -1,0 +1,66 @@
+\documentclass{amsart}
+\usepackage{thomas} % my style file, https://git.io/thomas.sty
+
+
+\newcommand{\pagenum}{215}
+\newcommand{\probnum}{13}
+
+\title{\pagenum.\probnum}
+\author{Thomas\ Breydo}
+
+\begin{document}
+
+\maketitle
+
+\begin{problem*}
+Give an example of an operator $T\in\SL(\C^4)$ such that $T$ is
+normal but not self-adjoint.
+\end{problem*}
+
+\vspace{0.5in}
+
+Define $T$ by $Tv=iv$ for all $v\in\C^4.$
+\begin{claim*}
+$T^*v=-iv.$
+\end{claim*}
+\begin{proof}
+Fix $u\in\C^4.$ Then, for all $v\in\C^4,$
+\begin{align*}
+    \iprod{u, T^*v}
+    &= \iprod{Tu, v} &&(\textit{definition of $T^*$})\\
+    &= \iprod{iu, v} \\
+    &= i\iprod{u, v} \\ 
+    &= \iprod{u, -iv}
+\end{align*}
+Thus, $T^*v=-iv$ as desired.
+\end{proof}
+
+\begin{claim*}
+$T$ is normal.
+\end{claim*}
+\begin{proof}
+For all $v\in\C^4,$
+\begin{align*}
+    TT^*v &= (i)(-i)v \\
+          &= (-i)(i)v \\
+          &= T^*Tv.
+\end{align*}
+Thus, $TT^*=T^*T,$ which means that $T$ is normal.
+\end{proof}
+
+\begin{claim*}
+$T$ is not self-adjoint.
+\end{claim*}
+\begin{proof}
+$T(1)=i$ while $T^*(1)=-i.$ Thus, $T\ne T^*.$
+\end{proof}
+
+\vspace{0.5in}
+
+\begin{note*}
+You can view the source code for this solution
+\href{https://github.com/thomasbreydo/linalg/blob/main/\pagenum_\probnum_Thomas_Breydo.tex}
+{here}.
+\end{note*}
+
+\end{document}
