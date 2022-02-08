@@ -1,0 +1,150 @@
+\documentclass{amsart}
+\usepackage{thomas} % my style file, https://git.io/thomas.sty
+
+
+\newcommand{\pagenum}{216}
+\newcommand{\probnum}{21}
+
+\title{\pagenum.\probnum}
+\author{Thomas\ Breydo}
+
+\begin{document}
+
+\maketitle
+
+\begin{problem*}
+Fix a positive integer $n.$ In the inner product space of
+continuous real-valued functions on $[-\pi, \pi]$ with inner
+product
+\begin{align*}
+    \iprod{f,g}=\int_{-\pi}^\pi{\!f(x)g(x)\dx},
+\end{align*}
+let
+\begin{align*}
+    V=\vspan(1,\sin x,\sin 2x,\dots,\sin nx,\cos x,\cos 2x,\dots,\cos nx).
+\end{align*}
+\begin{enumerate}[label=(\alph*),itemsep=1em,topsep=1em]
+    \item  Define $D\in\SL(V)$ by $Df=f'.$ Show that $D^*=-D.$
+        Conclude that $D$ is normal but not self-adjoint.
+    \item Define $T\in\SL(V)$ by $Tf=f''.$ Show that $T$ is
+        self-adjoint.
+\end{enumerate}
+\end{problem*}
+\vspace{0.5in}
+
+\begin{claim*}
+For all $f,g\in V,$
+\begin{align*}
+    f(\pi)g(\pi)=f(-\pi)g(-\pi).
+\end{align*}
+\end{claim*}
+\begin{proof}
+Suppose $f,g\in V.$ Then,
+\begin{align*}
+    f(x) &= a_0+a_1\sin x+\dots+a_n\sin nx+a_{n+1}\cos x+\dots+a_{2n}\cos nx \\
+    g(x) &= b_0+b_1\sin x+\dots+b_n\sin nx+b_{n+1}\cos x+\dots+b_{2n}\cos nx.
+\end{align*}
+Since all terms of $f(\pi)g(\pi)$ with $\sin(k\pi)$ will be zero,
+\begin{align*}
+    f(\pi)g(\pi)= a_0b_0 &+ a_0\sum_{i=1}^n b_{n+i}\cos(i\pi)
+    + b_0\sum_{i=1}^n a_{n+i}\cos(i\pi)\\
+            &+\sum_{1\le i,j\le n}
+            a_{n+i}\cos(i\pi)b_{n+j}\cos(j\pi).
+\end{align*} 
+Similarly,
+\begin{align*}
+    f(-\pi)g(-\pi)= a_0b_0 &+ a_0\sum_{i=1}^n b_{n+i}\cos(-i\pi)
+    + b_0\sum_{i=1}^n a_{n+i}\cos(-i\pi)\\
+            &+\sum_{1\le i,j\le n}
+            a_{n+i}\cos(-i\pi)b_{n+j}\cos(-j\pi).
+\end{align*}
+But since $\cos(-x)=\cos(x),$ we see that
+$f(\pi)g(\pi)=f(-\pi)g(-\pi).$
+\end{proof}
+
+\begin{claim*}
+For all $f,g\in V,$
+\begin{align*}
+    \int_{-\pi}^{\pi}{\!f'(x)g(x)\dx} = -\int_{-\pi}^{\pi}{\!f(x)g'(x)\dx}
+\end{align*}
+\end{claim*}
+\begin{proof}
+Starting with the previous claim,
+\begin{align*}
+    0 &= f(\pi)g(\pi)-f(-\pi)g(-\pi) \\
+      &=(f\cdot g)(x)\bigg\vert_{-\pi}^\pi \\
+      &=\int_{-\pi}^{\pi}{\!(f\cdot g)'(x)\dx} \\
+      &=\int_{-\pi}^{\pi}{\!f'(x)g(x)\dx}
+       +\int_{-\pi}^\pi{\!f(x)g'(x)\dx}.
+\end{align*}
+Thus,
+\begin{align*}
+\int_{-\pi}^{\pi}{\!f'(x)g(x)\dx}=-\int_{-\pi}^\pi{\!f(x)g'(x)\dx}
+\end{align*}
+as desired.\\
+\end{proof}
+
+Recall that $D\in\SL(V)$ is defined by $Tf=f'.$
+\begin{claim*}
+$D^*=-D.$
+\end{claim*}
+\begin{proof}
+Since $D^*$ is unique, all we need to do is show that for all
+$f,g\in V,$
+\begin{align*}
+\iprod{Df,g}=\iprod{f,-Dg}.
+\end{align*}
+Indeed,
+\begin{align*}
+    \iprod{Df,g} &= \iprod{f',g}\\
+                 &= \int_{-\pi}^{\pi}{\!f'(x)g(x)\dx} \\
+                 &=-\int_{-\pi}^\pi{\!f(x)g'(x)\dx} && (\text{previous claim})\\
+                 &= -\iprod{f,Dg} \\
+                 &= \iprod{f,-Dg}
+\end{align*}
+as desired.
+\end{proof}
+\begin{claim*}
+    $D$ is normal.
+\end{claim*}
+\begin{proof}
+\begin{align*}
+    DD^* &= (D)(-D) \\
+         &= (-D)(D) \\
+         &= D^*D,
+\end{align*}
+and thus $D$ is normal.
+\end{proof}
+
+\begin{claim*}
+    $D$ is not self-adjoint.
+\end{claim*}
+\begin{proof}
+    Clearly $D\ne D^*$ since $D^*=-D.\\$
+\end{proof}
+
+Recall that $T\in\SL(V)$ is defined by $Tf=f''.$
+\begin{claim*}
+    $T$ is self-adjoint.
+\end{claim*}
+\begin{proof}
+Since $T=DD,$
+\begin{align*}
+    T^* &= (DD)^* \\
+        &= D^*D^* \\
+        &= (-D)(-D) \\
+        &= DD \\
+        &= T.
+\end{align*}
+Thus, $T$ is self-adjoint.
+\end{proof}
+
+\vspace{0.5in}
+
+\begin{note*}
+You can view the source code for this solution
+\href{https://github.com/thomasbreydo/linalg/blob/main/\pagenum_\probnum_Thomas_Breydo.tex}
+{here}.
+\end{note*}
+
+\end{document}
