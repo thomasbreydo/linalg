@@ -1,0 +1,66 @@
+\documentclass{amsart}
+\usepackage{thomas} % my style file, https://git.io/thomas.sty
+
+
+\newcommand{\pagenum}{223}
+\newcommand{\probnum}{8}
+
+\title{\pagenum.\probnum}
+\author{Thomas\ Breydo}
+
+\begin{document}
+
+\maketitle
+
+\begin{problem*}
+Give an example of an operator $T$ on a complex
+vector space such that $T^9=T^8$ but $T^2\ne T.$
+\end{problem*}
+
+\vspace{0.5in}
+
+The key idea is to construct a $T$ such that $T^2,T^3,\dots,T^9$
+are all the zero map, while $T$ itself is not.
+
+Consider the complex vector space $\C$ with basis $1+0i,0+1i.$
+Let $T$ be the linear map defined by
+\begin{align*}
+    T(a+bi)=b+0i
+\end{align*}
+for all $a+bi\in\C.$
+
+\begin{claim*}
+$T^2\equiv 0.$
+\end{claim*}
+\begin{proof}
+For all $a+bi\in\C,$
+\begin{align*}
+    T^2(a+bi) &= T(b+0i)\\
+              &= 0+0i.
+\end{align*}
+Thus, $T^2$ is the zero map. \end{proof}
+
+\begin{claim*}
+$T^9\ne T^8.$
+\end{claim*}
+\begin{proof}
+It follows from the previous claim that $T^8\equiv 0$ and $T^9\equiv 0$
+, so $T^8=T^9.$
+\end{proof}
+
+\begin{claim*}
+$T^2\ne T.$
+\end{claim*}
+\begin{proof}
+Since $$T(1+1i)=1+0i$$ while $$T^2(1+1i)=0+0i,$$ the two maps
+are different.
+\end{proof}
+\vspace{0.5in}
+
+\begin{note*}
+You can view the source code for this solution
+\href{https://github.com/thomasbreydo/linalg/blob/main/\pagenum_\probnum_Thomas_Breydo.tex}
+{here}.
+\end{note*}
+
+\end{document}

@@ -1,0 +1,50 @@
+\documentclass{amsart}
+\usepackage{thomas} % my style file, https://git.io/thomas.sty
+
+
+\newcommand{\pagenum}{223}
+\newcommand{\probnum}{9}
+
+\title{\pagenum.\probnum}
+\author{Thomas\ Breydo}
+
+\begin{document}
+
+\maketitle
+
+\begin{problem*}
+Suppose $V$ is a complex inner product space. Prove
+that every normal operator on $V$ has a square root.
+\end{problem*}
+
+\begin{note*}
+An operator $S\in\SL(V)$ is called a \textit{square root}
+of $T\in\SL(V)$ if $S^2=T.$
+\end{note*}
+
+\vspace{0.5in}
+
+Suppose $T$ is a normal operator on $V.$ By the
+\textit{Complex Spectral Theorem,} $T$ has
+an orthonormal basis of eigenvectors $v_1,\dots,v_n.$
+Suppose $Tv_i=\lambda_iv_i,$ where $\lambda_i\in\C.$
+
+Recall that a linear map is uniquely defined by where
+it sends a basis of $V.$ Let $S$ be the linear map defined by
+$Sv_i=\sqrt\lambda_iv_i.$
+\begin{claim*}
+$S^2=T.$
+\end{claim*}
+\begin{proof}
+$S^2v_i=Tv_i$ for each basis vector $v_i,$ so $S^2=T.$
+\end{proof}
+
+\vspace{0.5in}
+
+\begin{note*}
+You can view the source code for this solution
+\href{https://github.com/thomasbreydo/linalg/blob/main/\pagenum_\probnum_Thomas_Breydo.tex}
+{here}.
+\end{note*}
+
+\end{document}
