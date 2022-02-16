@@ -49,16 +49,15 @@ to prove that $\iprod{Tv,v}\ne0$ for all nonzero $v\in V.$
 
 Suppose $v\in V$ is nonzero.
 Then, $Tv\ne 0$ because $T$ is invertible.
-Let $S$ be the unique positive square root of $T.$
-Then, $Sv\ne 0$ (because otherwise $Tv=S^2v=0$).
+If $\sqrt Tv=0$ then $Tv=0,$ so $\sqrt Tv\ne 0.$
 Thus, by the definiteness of the inner product,
 \begin{align*}
-    \iprod{Sv,Sv}>0.
+    \iprod*{\sqrt Tv,\sqrt Tv}>0.
 \end{align*}
 But
 \begin{align*}
-    \iprod{Sv,Sv} &= \iprod{Sv,S^*v} \\
-                  &= \iprod{S^2v,v} \\
+    \iprod*{\sqrt Tv,\sqrt Tv} &= \iprod*{\sqrt Tv,\sqrt T^*v} \\
+                  &= \iprod*{\sqrt T\sqrt Tv,v} \\
                   &= \iprod{Tv,v}, 
 \end{align*}
 so $\iprod{Tv,v}>0$ for nonzero $v.$
