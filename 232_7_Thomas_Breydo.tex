@@ -1,0 +1,74 @@
+\documentclass{amsart}
+\usepackage{thomas} % my style file, https://git.io/thomas.sty
+
+
+\newcommand{\pagenum}{232}
+\newcommand{\probnum}{7}
+
+\title{\pagenum.\probnum}
+\author{Thomas\ Breydo}
+
+\begin{document}
+
+\maketitle
+
+\begin{problem*}
+Suppose $T$ is a positive operator on $V.$ Prove that $T$ 
+is invertible if and only if
+\begin{align*}
+    \iprod{Tv,v}>0
+\end{align*}
+for all nonzero $v\in V.$
+\end{problem*}
+
+\vspace{0.5in}
+
+\begin{claim*}
+If $\iprod{Tv,v}>0$ for all nonzero $v\in V,$
+then $T$ is invertible.
+\end{claim*}
+\begin{proof}
+Suppose $\iprod{Tv,v}>0$ for all nonzero $v\in V.$
+For any $v\in V$ where $Tv=0,$
+\begin{align*}
+\iprod{Tv,v}=0,
+\end{align*}
+which implies $v=0,$ since $\iprod{Tv,v}>0$ for all nonzero $v.$ 
+Since $Tv=0$ implies $v=0,$ $T$ is injective and
+thus invertible.
+\end{proof}
+
+\begin{claim*}
+If $T$ is invertible, then $\iprod{Tv,v}>0$ for all nonzero
+$v\in V.$
+\end{claim*}
+\begin{proof}
+Since $T$ is positive, $\iprod{Tv,v}\ge0$ for all $v\in V.$
+Thus, it suffices
+to prove that $\iprod{Tv,v}\ne0$ for all nonzero $v\in V.$
+
+Suppose $v\in V$ is nonzero.
+Then, $Tv\ne 0$ because $T$ is invertible.
+If $\sqrt Tv=0$ then $Tv=0,$ so $\sqrt Tv\ne 0.$
+Thus, by the definiteness of the inner product,
+\begin{align*}
+    \iprod*{\sqrt Tv,\sqrt Tv}>0.
+\end{align*}
+But
+\begin{align*}
+    \iprod*{\sqrt Tv,\sqrt Tv} &= \iprod*{\sqrt Tv,\sqrt T^*v} \\
+                  &= \iprod*{\sqrt T\sqrt Tv,v} \\
+                  &= \iprod{Tv,v}, 
+\end{align*}
+so $\iprod{Tv,v}>0$ for nonzero $v.$
+\end{proof}
+
+\vspace{0.5in}
+
+\begin{note*}
+You can view the source code for this solution
+\href{https://github.com/thomasbreydo/linalg/blob/main/\pagenum_\probnum_Thomas_Breydo.tex}
+{here}.
+\end{note*}
+
+\end{document}

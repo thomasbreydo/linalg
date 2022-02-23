@@ -1,0 +1,59 @@
+\documentclass{amsart}
+\usepackage{thomas} % my style file, https://git.io/thomas.sty
+
+
+\newcommand{\pagenum}{231}
+\newcommand{\probnum}{4}
+
+\title{\pagenum.\probnum}
+\author{Thomas\ Breydo}
+
+\begin{document}
+
+\maketitle
+
+\begin{problem*}
+Suppose $T\in\SL(V,W).$ Prove that $T^*T$ is a positive operator
+on $V$ and $TT^*$ is a positive operator on $W.$
+\end{problem*}
+
+\vspace{0.5in}
+
+We will show the claim is true for $T^*T.$ The proof for
+$TT^*$ is similar.
+\begin{claim*}
+$T^*T$ is self-adjoint.
+\end{claim*}
+\begin{proof}
+\begin{align*}
+    \left(T^*T\right)^* &= T^*(T^*)^* \\
+                        &= T^*T,
+\end{align*}
+as desired.
+\end{proof}
+
+\begin{claim*}
+For all $v\in V,$ $\iprod{T^*Tv,v}\ge0.$
+\end{claim*}
+\begin{proof}
+Let $w=Tv.$ Then,
+\begin{align*}
+    \iprod{T^*Tv,v} &= \iprod{v, (T^*T)^*v} \\
+                    &= \iprod{v, T^*Tv} && (T^*T\text{ is self-adjoint}) \\
+                    &= \iprod{v, T^*w} \\
+                    &= \iprod{Tv, w} \\
+                    &= \iprod{w,w} \\
+                    &\ge 0, &&(\text{definition of inner product})
+\end{align*} 
+as desired.
+\end{proof}
+
+\vspace{0.5in}
+
+\begin{note*}
+You can view the source code for this solution
+\href{https://github.com/thomasbreydo/linalg/blob/main/\pagenum_\probnum_Thomas_Breydo.tex}
+{here}.
+\end{note*}
+
+\end{document}
