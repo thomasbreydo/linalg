@@ -1,0 +1,72 @@
+\documentclass{amsart}
+\usepackage{thomas} % my style file, https://git.io/thomas.sty
+
+
+\newcommand{\pagenum}{238}
+\newcommand{\probnum}{2}
+
+\title{\pagenum.\probnum}
+\author{Thomas\ Breydo}
+
+\begin{document}
+
+\maketitle
+
+\begin{problem*}
+Give an example of $T\in\SL(\C^2)$ such that 0 is the only eigenvalue
+of $T$ and the singular values are $5,0.$
+\end{problem*}
+
+\vspace{0.5in}
+
+Suppose
+\begin{align*}
+    \SM(T)=\begin{pmatrix}
+        0 & a \\
+        b & 0
+    \end{pmatrix}.
+\end{align*}
+Since the standard basis is orthonormal,
+\begin{align*}
+    \SM(T^*)=\begin{pmatrix}
+        0 & b \\
+        a & 0
+    \end{pmatrix}.
+\end{align*}
+Thus,
+\begin{align*}
+    \SM(T^* T) &= \SM(T^*)\SM(T) \\
+               &= \begin{pmatrix}
+                   0 & b \\
+                   a & 0
+               \end{pmatrix}
+               \begin{pmatrix}
+                   0 & a \\
+                   b & 0
+               \end{pmatrix} \\
+               &= \begin{pmatrix}
+                   b^2 & 0 \\
+                   0 & a^2
+               \end{pmatrix}
+\end{align*}
+Since we need $T$ to have singular values $0$ and $5,$ we need $T^*T$
+to have eigenvalues $0$ and $25.$ If we let $b=0$ and $a=5,$ we get
+\begin{align*}
+    \SM(T)=\begin{pmatrix}
+        0 & 5 \\
+        0 & 0
+    \end{pmatrix}.
+\end{align*}
+Not sure how to prove that $0$ is the only eigenvalue of
+$T(z_1,z_2)=(5z_2,0).$ Clearly it \textit{is} an eigenvalue,
+though.
+
+\vspace{0.5in}
+
+\begin{note*}
+You can view the source code for this solution
+\href{https://github.com/thomasbreydo/linalg/blob/main/\pagenum_\probnum_Thomas_Breydo.tex}
+{here}.
+\end{note*}
+
+\end{document}
