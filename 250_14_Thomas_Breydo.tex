@@ -1,0 +1,48 @@
+\documentclass{amsart}
+\usepackage{thomas} % my style file, https://git.io/thomas.sty
+
+
+\newcommand{\pagenum}{250}
+\newcommand{\probnum}{14}
+
+\title{\pagenum.\probnum}
+\author{Thomas\ Breydo}
+
+\begin{document}
+
+\maketitle
+
+\begin{problem*}
+Suppose $V$ is an inner product space and $N\in\SL(V)$ is nilpotent.
+Prove that there exists an orthonormal basis of $V$ with respect
+to which $N$ has an upper-triangular matrix.
+\end{problem*}
+
+\vspace{0.5in}
+
+By \textit{8.19 Matrix of a nilpotent operator,} there exists
+a basis $v_1,\ldots,v_n$ of $V$ such that
+\begin{align*}
+    \SM\big(N,(v_1,\dots,v_n)\big) = \begin{pmatrix}
+        0 & & * \\
+          & \ddots & \\
+        0 & & 0
+    \end{pmatrix}.
+\end{align*}
+If we apply the Gram---Schmidt procedure to $v_1,\ldots,v_n,$
+we will obtain a orthonormal basis $e_1,\ldots,e_n$ of $V$
+such that $\SM\big(N,(e_1,\ldots,e_n)\big)$ is still
+upper-triangular.
+
+Thus, there exists an orthonormal basis of $V$ with respect to
+which $N$ has an upper-triangular matrix.
+
+\vspace{0.5in}
+
+\begin{note*}
+You can view the source code for this solution
+\href{https://github.com/thomasbreydo/linalg/blob/main/\pagenum_\probnum_Thomas_Breydo.tex}
+{here}.
+\end{note*}
+
+\end{document}
