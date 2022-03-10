@@ -1,0 +1,53 @@
+\documentclass{amsart}
+\usepackage{thomas} % my style file, https://git.io/thomas.sty
+
+
+\newcommand{\pagenum}{268}
+\newcommand{\probnum}{8}
+
+\title{\pagenum.\probnum}
+\author{Thomas\ Breydo}
+
+\begin{document}
+
+\maketitle
+
+\begin{problem*}
+Suppose $T\in\SL(V)$ and
+\begin{align*}
+    p(z)=z^n + a_{n-1}z^{n-1} + \dots + a_0
+\end{align*}
+is the minimal polynomial of $T.$ Prove that $T$ is invertible if and
+only if $a_0\ne 0.$
+\end{problem*}
+
+\vspace{0.5in}
+
+\begin{claim*}
+    $T$ is invertible if and only if $a_0\ne 0$.
+\end{claim*}
+\begin{proof}
+We will prove the claim by a series of ``if-and-only-ifs:''
+\begin{align*}
+    T\text{ is invertible}
+    &\Longleftrightarrow
+    0\text{ is not an eigenvalue of }T \\
+    &\Longleftrightarrow
+    0\text{ is not a root of }p(z) \\
+    &\Longleftrightarrow
+    p(0)\ne 0 \\
+    &\Longleftrightarrow
+    a_0\ne 0
+\end{align*}
+\end{proof}
+
+% t invertible <=> 0 not eigenvalue <=> 0 not a root of minimal polynomial
+\vspace{0.5in}
+
+\begin{note*}
+You can view the source code for this solution
+\href{https://github.com/thomasbreydo/linalg/blob/main/\pagenum_\probnum_Thomas_Breydo.tex}
+{here}.
+\end{note*}
+
+\end{document}
