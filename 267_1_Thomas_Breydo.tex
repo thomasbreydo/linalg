@@ -1,0 +1,54 @@
+\documentclass{amsart}
+\usepackage{thomas} % my style file, https://git.io/thomas.sty
+
+
+\newcommand{\pagenum}{267}
+\newcommand{\probnum}{1}
+
+\title{\pagenum.\probnum}
+\author{Thomas\ Breydo}
+
+\begin{document}
+
+\maketitle
+
+\begin{problem*}
+Suppose $T\in\SL(\C^4)$ is such that the eigenvalues of $T$ are
+3, 5, 8. Prove that $(T-3I)^2(T-5I)^2(T-8I)^2=0.$
+\end{problem*}
+
+\vspace{0.5in}
+
+Suppose $p(z)$ is the characteristic polynomial of $T.$
+
+\begin{claim*}
+$p(z)=(z-3)^a(z-5)^b(z-8)^c,$ where one of $a,b,c$ equals 2 and the others
+equal 1.
+\end{claim*}
+\begin{proof}
+Since each eigenvalue has multiplicity at least 1, and the sum of the
+multiplicities is 4, we see that the multiplicities are 1, 1, 2.
+\end{proof}
+
+Suppose $q(z)=(z-3)^2(z-5)^2(z-8)^2.$
+
+\begin{claim*}
+    $q(z)$ is a multiple of the minimal polynomial.
+\end{claim*}
+\begin{proof}
+By \textit{8.48}, we know that $p(z)$ is a multiple of the
+minimal polynomial. Since $q(z)$ is a multiple of $p(z),$
+it follows that $q(z)$ is a multiple of the minimal polynomial.
+\end{proof}
+
+Finally, by \textit{8.46}, $q(T)=0.$
+
+\vspace{0.5in}
+
+\begin{note*}
+You can view the source code for this solution
+\href{https://github.com/thomasbreydo/linalg/blob/main/\pagenum_\probnum_Thomas_Breydo.tex}
+{here}.
+\end{note*}
+
+\end{document}

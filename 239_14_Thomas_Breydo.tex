@@ -1,0 +1,56 @@
+\documentclass{amsart}
+\usepackage{thomas} % my style file, https://git.io/thomas.sty
+
+
+\newcommand{\pagenum}{239}
+\newcommand{\probnum}{14}
+
+\title{\pagenum.\probnum}
+\author{Thomas\ Breydo}
+
+\begin{document}
+
+\maketitle
+
+\begin{problem*}
+Suppose $T\in\SL(V).$
+Prove that $\dim\vrange T$ equals the number of
+nonzero singular values of $T$.
+\end{problem*}
+
+\vspace{0.5in}
+
+\begin{claim*}
+$\vnull T = E(0, \sqrt{T^*T})$ 
+\end{claim*}
+\begin{proof}
+Decompose $T$ into $S\sqrt{T^*T}.$ Suppose $v\ne0$ and $Tv=0.$
+Then,
+\begin{align*}
+   S\sqrt{T^*T}v = 0,
+\end{align*}
+which means $\sqrt{T^*T}v=0,$ since $S$ preserves norms. Thus,
+$\vnull T = \vnull\sqrt{T^*T}.$ Finally, since
+$\vnull\sqrt{T^*T}=E(0, \sqrt{T^*T}),$ we get
+$$\vnull T = E(0, \sqrt{T^*T})$$
+\end{proof}
+
+\vspace{0.25in}
+
+Suppose $T$ has $k$ nonzero singular values.
+Since $k=\dim V - \dim E(0,\sqrt{T^*T}).$ Finally,
+\begin{align*}
+    \dim\vrange T &= \dim V - \dim\vnull T \\
+                 &= \dim V - \dim E(0,\sqrt{T^*T}) \\
+                 &= k
+\end{align*}
+
+\vspace{0.5in}
+
+\begin{note*}
+You can view the source code for this solution
+\href{https://github.com/thomasbreydo/linalg/blob/main/\pagenum_\probnum_Thomas_Breydo.tex}
+{here}.
+\end{note*}
+
+\end{document}

@@ -1,0 +1,46 @@
+\documentclass{amsart}
+\usepackage{thomas} % my style file, https://git.io/thomas.sty
+
+
+\newcommand{\pagenum}{250}
+\newcommand{\probnum}{9}
+
+\title{\pagenum.\probnum}
+\author{Thomas\ Breydo}
+
+\begin{document}
+
+\maketitle
+
+\begin{problem*}
+Suppose $S,T\in\SL(V)$ and $ST$ is nilpotent. Prove that $TS$ is
+nilpotent.
+\end{problem*}
+
+\vspace{0.5in}
+
+\begin{claim*}
+$TS$ is nilpotent.
+\end{claim*}
+\begin{proof}
+Since $ST$ is nilpotent, then there exists some $k$ for which
+\begin{align*}
+    (ST)^{k} = 0.
+\end{align*}
+Note that
+\begin{align*}
+    (TS)^{k+1} &= T(ST)^kS \\
+               &= 0,
+\end{align*}
+and thus $TS$ is nilpotent.
+\end{proof}
+
+\vspace{0.5in}
+
+\begin{note*}
+You can view the source code for this solution
+\href{https://github.com/thomasbreydo/linalg/blob/main/\pagenum_\probnum_Thomas_Breydo.tex}
+{here}.
+\end{note*}
+
+\end{document}

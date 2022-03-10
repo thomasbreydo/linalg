@@ -1,0 +1,155 @@
+\documentclass{amsart}
+\usepackage{thomas} % my style file, https://git.io/thomas.sty
+
+
+\newcommand{\pagenum}{260}
+\newcommand{\probnum}{11}
+
+\title{\pagenum.\probnum}
+\author{Thomas\ Breydo}
+
+\begin{document}
+
+\maketitle
+
+\begin{problem*}
+Suppose $T\in\SL(V)$ and $\lambda\in\F.$ Prove that for
+every basis of $V$ with respect to which $T$ has
+an upper-triangular matrix, the number of times
+that $\lambda$ appears on the matrix of $T$ equals
+the multiplicity of $\lambda$ as an eigenvalue
+of $T.$
+\end{problem*}
+
+\vspace{0.5in}
+
+\begin{claim}
+For $S\in\SL(V),$ if $\SM(S)$ upper-triangular then it has
+$\dim\vnull S$ zeros on its diagonal.
+\end{claim}
+\begin{proof}
+Supppose $\SM(S)$ has $d$ zeros on its diagonal. Then, its
+rank is $n-d,$ since the $d$ columns with zeros on the diagonal
+are in the span of the columnns that precede them.
+\end{proof}
+
+\begin{claim}
+Suppose
+\begin{align*}
+\SM(S)=\begin{pmatrix}
+    a_1 & & * \\
+        & \ddots &  \\
+    0 & & a_n
+\end{pmatrix}.
+\end{align*}
+Then, for $k\ge 1,$
+\begin{align*}
+    \SM\big(S^k\big)=\begin{pmatrix}
+        {a_1}^k & & * \\
+            & \ddots &  \\
+        0 & & {a_n}^k
+    \end{pmatrix}.
+\end{align*}
+\end{claim}
+
+\begin{proof}
+Induct on $k.$ The base case is trivial. Now, suppose
+\begin{align*}
+    \SM\big(S^k\big)=\begin{pmatrix}
+        {a_1}^k & & * \\
+            & \ddots &  \\
+        0 & & {a_n}^k
+    \end{pmatrix}.
+\end{align*}
+Then,
+\begin{align*}
+    \SM\big(S^{k+1}\big) &= \SM\big(S^k\big)\SM(S) \\
+                 &= \begin{pmatrix}
+        {a_1}^k & & * \\
+            & \ddots &  \\
+        0 & & {a_n}^k
+    \end{pmatrix}
+    \begin{pmatrix}
+        a_1 & & * \\
+            & \ddots &  \\
+        0 & & a_n
+    \end{pmatrix}.
+\end{align*}
+The $i^\text{th}$ diagonal entry of this product will be
+\begin{align*}
+\begin{pmatrix}
+    0 & \cdots & 0 & {a_i}^k & * & \cdots & *
+\end{pmatrix}
+\begin{pmatrix}
+    * \\
+    \vdots \\
+    * \\
+    a_i \\
+    0 \\
+    \vdots \\
+    0
+\end{pmatrix} = {a_i}^{k+1}.
+\end{align*}
+Since $\SM\big(S^{k+1}\big)$ will also be upper-triangular,
+\begin{align*}
+    \SM\big(S^{k+1}\big)=\begin{pmatrix}
+        {a_1}^{k+1} & & * \\
+            & \ddots & \\
+        0 & & {a_n}^{k+1}
+    \end{pmatrix}.
+\end{align*}
+\end{proof}
+
+
+\begin{claim}
+$\SM(T-\lambda I)$ is upper-triangular and has $d$
+zeros on its diagonal.
+\end{claim}
+\begin{proof}
+Note,
+\begin{align*}
+    \SM(T-\lambda I) &= \SM(T)-\lambda\SM(I) \\
+                     &= \begin{pmatrix}
+                         a_{1} & & * \\
+                               & \ddots & \\
+                         0 & & a_{n}
+                     \end{pmatrix}
+                     -
+                     \begin{pmatrix}
+                         \lambda & & 0 \\
+                                 & \ddots & \\
+                         0 & & \lambda
+                     \end{pmatrix} \\
+                     &= \begin{pmatrix}
+                         a_{1}-\lambda & & * \\
+                                       & \ddots & \\
+                         0 & & a_{n}-\lambda
+                     \end{pmatrix}.
+\end{align*}
+Since $a_i-\lambda=0$ where $a_i=\lambda,$ we see that $\SM(T-\lambda I)$
+has $d$ zeros on its diagonal.
+\end{proof}
+
+\begin{claim}
+$\SM\big((T-\lambda I)^{\dim V}\big)$ is upper-triangular
+and has $d$ zeros on its diagonal.
+\end{claim}
+\begin{proof}
+By Claim 3, we have that $\SM(T-\lambda I)$ is upper-triangular
+and has $d$ zeros on its diagonal. It follows from Claim 2
+that $\SM\big((T-\lambda I)^{\dim V}\big)$ is upper-triangular
+and has $d$ zeros on its diagonal.
+\end{proof}
+
+Finally, we will show that a matrix with $d$ zeros has
+a null space of dimension $d.$
+
+\vspace{0.5in}
+
+\begin{note*}
+You can view the source code for this solution
+\href{https://github.com/thomasbreydo/linalg/blob/main/\pagenum_\probnum_Thomas_Breydo.tex}
+{here}.
+\end{note*}
+
+\end{document}
