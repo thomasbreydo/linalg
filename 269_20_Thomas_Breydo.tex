@@ -1,0 +1,138 @@
+\documentclass{amsart}
+\usepackage{thomas} % my style file, https://git.io/thomas.sty
+
+\newcommand{\restrict}[2]{\left.#1\right|_{#2}}
+
+\newcommand{\pagenum}{269}
+\newcommand{\probnum}{20}
+
+\title{\pagenum.\probnum}
+\author{Thomas\ Breydo}
+
+\begin{document}
+
+\maketitle
+
+\begin{problem*}
+Suppose $V$ is a complex vector space and $V_1,\dots,V_m$ are
+nonzero subspaces of $V$ such that $V=V_1\oplus\dots\oplus V_m.$
+Suppose $T\in\SL(V)$ and each $V_j$ is invariant under $T.$
+For each $j,$ let $p_j$ denote the characteristic polynomial
+of $\restrict{T}{V_j}$ Prove that the characteristic
+polynomial of $T$ equals $p_1\cdots p_m.$
+\end{problem*}
+
+\vspace{0.5in}
+
+\begin{claim*}
+Every eigenvalue of $\restrict{T}{V_j}$ is also an eigenvalue
+of $T.$
+\end{claim*}
+\begin{proof}
+Suppose $\lambda$ is an eigenvalue of $\restrict{T}{V_j},$
+with corresponding generalized eigenvector $v\in V_j.$
+Then,
+\begin{align*}
+\left(\restrict{T}{V_j}-\lambda I\right)^{\dim V_j}v=0.
+\end{align*}
+Since $\dim V_j<\dim V$ and $T$ is invariant on $V_j,$
+\begin{align*}
+\left(T-\lambda I\right)^{\dim V}v=0.
+\end{align*}
+Thus, $\lambda$ must be one of the eigenvalues of $T$.
+\end{proof}
+
+\vspace{\baselineskip}
+
+Suppose the eigenvalues of $T$ are $\lambda_1,\dots,\lambda_k.$
+
+\begin{claim*}
+The sum of the multiplicities of some eigenvalue $\lambda$ over all
+$\restrict{T}{V_1},\dots,\restrict{T}{V_m}$ is equal to the
+multiplicity of eigenvalue $\lambda$ of $T.$ In other words,
+\begin{align*}
+    \dim G(\lambda,T)
+            &= \dim G(\lambda,\restrict{T}{V_1})
+            +\cdots+
+            \dim G(\lambda,\restrict{T}{V_m}).
+\end{align*}
+
+\end{claim*}
+\begin{proof}
+By \textit{8.21},
+\begin{align*}
+    V_j &= G(\lambda_1,\restrict{T}{V_j})\oplus\cdots\oplus G(\lambda_k,
+    \restrict{T}{V_j}),
+\end{align*}
+since the eigenvalues of $V_j$ are contained within
+$\lambda_1,\dots,\lambda_k$ We use this to go from line
+two to line three below:
+\begin{align*}
+    G(\lambda_1,T)\oplus\cdots\oplus G(\lambda_k,T)
+      &= V \\
+      &= \bigoplus_{j=1}^m{V_j} \\
+      &= \bigoplus_{j=1}^m{\left(
+          G(\lambda_1,\restrict{T}{V_j})\oplus\cdots\oplus G(\lambda_k,
+    \restrict{T}{V_j})\right)} \\
+      &= \left(\bigoplus_{j=1}^{m}G(\lambda_1,\restrict{T}{V_j})\right)
+      \oplus\cdots\oplus
+      \left(\bigoplus_{j=1}^{m}G(\lambda_k,\restrict{T}{V_j})\right).
+\end{align*}
+We gather that for each $\lambda,$
+\begin{align*}
+    G(\lambda,T) &= \bigoplus_{j=1}^m G(\lambda,\restrict{T}{V_j}) \\
+                   &= G(\lambda,\restrict{T}{V_1})\oplus
+                   \cdots\oplus G(\lambda,\restrict{T}{V_m}),
+\end{align*}
+and thus
+\begin{align*}
+    \dim G(\lambda,T) &= \dim\bigg(
+        G(\lambda,\restrict{T}{V_1})
+        \oplus\cdots\oplus G(\lambda,\restrict{T}{V_m})
+    \bigg)\\
+                        &= \dim G(\lambda,\restrict{T}{V_1})
+                        +\cdots+
+                        \dim G(\lambda,\restrict{T}{V_m}).\qedhere
+\end{align*}
+\end{proof}
+
+\vspace{0.5in}
+
+Suppose the characteristic polynomial of $T$ is $q.$
+\begin{claim*}
+    $p_1\cdots p_m=q.$
+\end{claim*}
+\begin{proof}
+\begin{align*}
+    p_1\cdots p_m &= \prod_{j=1}^m{p_j} \\
+                  &= \prod_{j=1}^m{
+                      \left((z-\lambda_1)^{\dim G(\lambda_1,\restrict{T}{V_j})}\right)
+                  \cdots
+              \left((z-\lambda_k)^{\dim G(\lambda_k,\restrict{T}{V_j})}\right)
+          }\\
+          &= \left(\prod_{j=1}^m
+                      (z-\lambda_1)^{\dim G(\lambda_1,\restrict{T}{V_j})}
+                      \right)
+                      \cdots
+                      \left(\prod_{j=1}^m
+                      (z-\lambda_k)^{\dim G(\lambda_k,\restrict{T}{V_j})}
+                      \right)\\
+          &= \left((z-\lambda_1)
+          ^{\sum_{j=1}^m\dim G(\lambda_1,\restrict{T}{V_j})}\right)
+          \cdots
+          \left((z-\lambda_1)
+          ^{\sum_{j=1}^m\dim G(\lambda_k,\restrict{T}{V_j})}\right)\\
+          &= \left((z-\lambda_1)^{\dim{G(\lambda_1,T)}}\right)
+          \cdots
+          \left((z-\lambda_k)^{\dim{G(\lambda_k,T)}}\right)\\
+          &= q
+\end{align*}
+\end{proof}
+
+\begin{note*}
+You can view the source code for this solution
+\href{https://github.com/thomasbreydo/linalg/blob/main/\pagenum_\probnum_Thomas_Breydo.tex}
+{here}.
+\end{note*}
+
+\end{document}

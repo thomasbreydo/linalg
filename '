@@ -1,0 +1,43 @@
+\documentclass{amsart}
+\usepackage{thomas} % my style file, https://git.io/thomas.sty
+
+\newcommand{\restrict}[2]{\left.#1\right|_{#2}}
+
+\newcommand{\pagenum}{269}
+\newcommand{\probnum}{20}
+
+\title{\pagenum.\probnum}
+\author{Thomas\ Breydo}
+
+\begin{document}
+
+\maketitle
+
+\begin{problem*}
+Suppose $V$ is a complex vector space and $V_1,\dots,V_m$ are
+nonzero subspaces of $V$ such that $V=V_1\oplus\dots\oplus V_m.$
+Suppose $T\in\SL(V)$ and each $V_j$ is invariant under $T.$
+For each $j,$ let $p_j$ denote the characteristic polynomial
+of $\restrict{T}{V_j}$ Prove that the characteristic
+polynomial of $T$ equals $p_1\dots p_m.$
+\end{problem*}
+
+\vspace{0.5in}
+
+
+Supopse $\restrict{T}{V_j}$ has $a_j$ eigenvalues, namely
+$\lambda_j_1,\dots,\lambda_j_{a_j}$
+
+\begin{proof}
+
+\end{proof}
+
+\vspace{0.5in}
+
+\begin{note*}
+You can view the source code for this solution
+\href{https://github.com/thomasbreydo/linalg/blob/main/\pagenum_\probnum_Thomas_Breydo.tex}
+{here}.
+\end{note*}
+
+\end{document}
