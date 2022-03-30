@@ -18,7 +18,7 @@ Suppose $V$ is a complex vector space and $V_1,\dots,V_m$ are
 nonzero subspaces of $V$ such that $V=V_1\oplus\dots\oplus V_m.$
 Suppose $T\in\SL(V)$ and each $V_j$ is invariant under $T.$
 For each $j,$ let $p_j$ denote the characteristic polynomial
-of $\restrict{T}{V_j}$ Prove that the characteristic
+of $\restrict{T}{V_j}.$ Prove that the characteristic
 polynomial of $T$ equals $p_1\cdots p_m.$
 \end{problem*}
 
@@ -29,17 +29,14 @@ Every eigenvalue of $\restrict{T}{V_j}$ is also an eigenvalue
 of $T.$
 \end{claim*}
 \begin{proof}
-Suppose $\lambda$ is an eigenvalue of $\restrict{T}{V_j},$
-with corresponding generalized eigenvector $v\in V_j.$
-Then,
+Suppose $\lambda$ is an eigenvalue of $\restrict{T}{V_j}$ with
+eigenvector $v.$ Then,
 \begin{align*}
-\left(\restrict{T}{V_j}-\lambda I\right)^{\dim V_j}v=0.
+    Tv
+    &= \left(\restrict{T}{V_j}\right)v \\
+    &= \lambda v,
 \end{align*}
-Since $\dim V_j<\dim V$ and $T$ is invariant on $V_j,$
-\begin{align*}
-\left(T-\lambda I\right)^{\dim V}v=0.
-\end{align*}
-Thus, $\lambda$ must be one of the eigenvalues of $T$.
+so $\lambda$ is an eigenvalue of $\restrict{T}{V_j}.$
 \end{proof}
 
 \vspace{\baselineskip}
@@ -96,7 +93,8 @@ and thus
 \end{align*}
 \end{proof}
 
-\vspace{0.5in}
+\vspace{\baselineskip}
+
 
 Suppose the characteristic polynomial of $T$ is $q.$
 \begin{claim*}
@@ -128,6 +126,8 @@ Suppose the characteristic polynomial of $T$ is $q.$
           &= q
 \end{align*}
 \end{proof}
+
+\vspace{0.5in}
 
 \begin{note*}
 You can view the source code for this solution
