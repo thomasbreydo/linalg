@@ -1,0 +1,65 @@
+\documentclass{amsart}
+\usepackage{thomas} % my style file, https://git.io/thomas.sty
+
+
+\newcommand{\pagenum}{285}
+\newcommand{\probnum}{7}
+
+\title{\pagenum.\probnum}
+\author{Thomas\ Breydo}
+
+\begin{document}
+
+\maketitle
+
+\begin{problem*}
+Suppose $V$ is a real vector space and $N\in\SL(V).$ Prove that
+$N_C$ is nilpotent if and only if $N$ is nilpotent.
+\end{problem*}
+
+\vspace{0.5in}
+
+\newcommand{\dimv}{k}
+
+Suppose $k=\dim V.$
+
+\begin{claim*}
+$N^{\dimv}=0 \then (N_C)^{\dimv}=0$
+\end{claim*}
+\begin{proof}
+Suppose $N^{\dimv}=0.$ Then, for any $u+iv\in V_C,$
+\begin{align*}
+    (N_C)^\dimv(u+iv) &= N^\dimv u+iN^\dimv v && \text{(by 9.9)} \\
+              &= 0,
+\end{align*}
+and thus $(N_C)^k=0.$
+\end{proof}
+
+\begin{claim*}
+$(N_C)^{\dimv}=0 \then N^{\dimv}=0$
+\end{claim*}
+\begin{proof}
+Suppose $(N_C)^\dimv=0.$ Then, for any $u\in V,$
+\begin{align*}
+    N^ku &= N^ku + i\cdot 0 \\
+         &= N^ku + iN^k0 \\
+         &= (N_C)^\dimv(u+i\cdot 0) && \text{(by 9.9)} \\
+         &= 0,
+\end{align*}
+and thus $N^k=0.$
+\end{proof}
+
+Combining the two claims above, we get that
+\begin{align*}
+    N^k = 0 \quad\iff\quad (N_C)^k=0.
+\end{align*}
+
+\vspace{0.5in}
+
+\begin{note*}
+You can view the source code for this solution
+\href{https://github.com/thomasbreydo/linalg/blob/main/\pagenum_\probnum_Thomas_Breydo.tex}
+{here}.
+\end{note*}
+
+\end{document}
