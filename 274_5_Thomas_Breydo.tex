@@ -1,0 +1,93 @@
+\documentclass{amsart}
+\usepackage{thomas} % my style file, https://git.io/thomas.sty
+
+
+\newcommand{\pagenum}{274}
+\newcommand{\probnum}{5}
+
+\title{\pagenum.\probnum}
+\author{Thomas\ Breydo}
+
+\begin{document}
+
+\maketitle
+
+\begin{problem*}
+Suppose $T\in\SL(V)$ and $v_1,\dots,v_n$ is a basis of $V$
+that is a Jordan basis for $T.$ Describe the matrix
+of $T^2$ with respect to this basis.
+\end{problem*}
+
+\vspace{0.5in}
+
+Since $v_1,\dots,v_n$ is a Jordan basis for $T,$
+
+\begin{align*}
+    \SM(T) &= \begin{pmatrix}
+        A_1 & & 0 \\
+            & \ddots & \\
+        0 & & A_p
+    \end{pmatrix},
+\end{align*}
+
+where
+
+\begin{align*}
+    A_j &= \begin{pmatrix}
+        \lambda_j & 1 & & 0 \\
+                  & \ddots & \ddots & \\
+                  &       & \ddots & 1 \\
+        0 & & & \lambda_j
+    \end{pmatrix},
+\end{align*}
+
+\begin{claim*}
+    \begin{align*}
+    \SM(T^2) &= \begin{pmatrix}
+        A_1^2 & & 0 \\
+            & \ddots & \\
+        0 & & A_p^2
+    \end{pmatrix},
+    \end{align*}
+\end{claim*}
+\begin{proof}
+If you do the matrix multiplication $\SM(T)\cdot\SM(T),$ you will get
+the desired result. Intuitively, if $T$ acts independently on
+the $p$ subspaces, then $T^2$ will act exactly as described by
+$A_1^2,\dots,A_p^2.$
+\end{proof}
+
+
+As a result of the claim above, we see that
+
+\begin{align*}
+    \SM(T^2) &= \begin{pmatrix}
+        B_1 & & 0 \\
+            & \ddots & \\
+        0 & & B_p
+    \end{pmatrix},
+\end{align*}
+
+where
+
+\begin{align*}
+    B_j &= A_j^2 \\
+        &= \begin{pmatrix}
+            \lambda_j^2 & 2\lambda _j & 1 & & 0 \\
+                        & \ddots & \ddots & \ddots & \\
+                        & & \ddots & \ddots & 1 \\
+                        &       & & \ddots & 2\lambda_j \\
+            0 & & & & \lambda_j
+    \end{pmatrix}.
+\end{align*}
+
+
+\vspace{0.5in}
+
+\begin{note*}
+You can view the source code for this solution
+\href{https://github.com/thomasbreydo/linalg/blob/main/\pagenum_\probnum_Thomas_Breydo.tex}
+{here}.
+\end{note*}
+
+\end{document}
