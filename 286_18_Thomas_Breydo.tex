@@ -1,0 +1,82 @@
+\documentclass{amsart}
+\usepackage{footnote}
+\usepackage{thomas} % my style file, https://git.io/thomas.sty
+
+
+\newcommand{\pagenum}{286}
+\newcommand{\probnum}{18}
+
+\title{\pagenum.\probnum}
+\author{Thomas\ Breydo}
+
+\begin{document}
+
+\maketitle
+
+\begin{problem*}
+Suppose $V$ is a real vector space and $T\in\SL(V).$ Prove that the
+following are equivalent:
+\begin{enumerate}[label=(\alph*)]
+    \item All the eigenvalues of $T_\C$ are real.
+    \item There exists a basis of $V$ with respect to which
+        $T$ has an upper-triangular matrix.
+    \item There exists a basis of $V$ consisting of generalized
+        eigenvectors.
+\end{enumerate}
+\end{problem*}
+
+\vspace{0.5in}
+
+b->a
+
+a->c
+
+
+\begin{claim*}
+(c) implies (b)
+\end{claim*}
+\begin{proof}
+Suppose there exists a basis of $V$ consisting of generalized
+eigenvectors. By \textit{8.13}, each vector corresponds to just one eigenvalue.
+Reorder the vectors so that all vectors with eigenvalue $\lambda_1$
+come first, then $\lambda_2,$ and so on. Within each $\lambda$ group,
+sort the vectors $v_i$ in increasing value of $k_i,$ where
+\begin{align*}
+    k_i\coloneqq\text{smallest }m\text{ for which }(T-\lambda_{v_i} I)^m v_i=0.
+\end{align*}
+
+Suppose that the reordered basis is $v_1,\ldots,v_n.$
+We will now show that the matrix of $T$ with respect thomas
+$v_1,\ldots,v_n$ is upper-triangular. Suppose $v_i$ has eigenvalue
+$\lambda$ and $k_i=k,$ and that
+\begin{align*}
+    Tv_i=a_1v_1+\cdots+a_nv_n.
+\end{align*}
+We must show that $a_{i+1}=\cdots=a_n=0.$ Since $v_i$ is a generalized
+eigenvector with eigenvalue $\lambda,$
+\begin{align*}
+    0
+    &= (T-\lambda I)^{k_i+1}{v_i} \\
+    &= (T-\lambda I)^{k_i}(Tv_i-\lambda v_i) \\
+    &= (T-\lambda I)^{k_i}\left(a_1v_1+\cdots+a_nv_n-\lambda v_i\right)\\
+    &= \sum_{j\ne i}{(T-\lambda I)^{k_i}(a_jv_j)}
+        &&\text{see note\footnotemark}\\
+    &= \sum_{j\ne i}{a_j(T-\lambda I)^{k_i}v_j}
+\end{align*}
+\footnotetext{Note,
+$(T-\lambda I)^{k_i}(a_iv_i)=(T-\lambda I)^{k_i}(-\lambda v_i)=0$}
+But $v_1,\ldots,v_n$ is linearly independent, and so is the list
+
+Since $v_1,\dots,v_n$ is a basis of $V$ with respect to which
+$T$ has an upper-triangular matrix, (c) implies (b).
+\end{proof}
+
+\vspace{0.5in}
+
+\begin{note*}
+You can view the source code for this solution
+\href{https://github.com/thomasbreydo/linalg/blob/main/\pagenum_\probnum_Thomas_Breydo.tex}
+{here}.
+\end{note*}
+
+\end{document}
