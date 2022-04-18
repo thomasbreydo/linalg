@@ -1,0 +1,106 @@
+\documentclass{amsart}
+\usepackage{thomas} % my style file, https://git.io/thomas.sty
+
+
+\newcommand{\pagenum}{294}
+\newcommand{\probnum}{5}
+
+\title{\pagenum.\probnum}
+\author{Thomas\ Breydo}
+
+\begin{document}
+
+\maketitle
+
+\begin{problem*}
+Prove the Real Spectral Theorem via complexification and the
+Complex Spectral Theorem.
+\end{problem*}
+
+\vspace{0.5in}
+
+Suppose $V$ is a real inner product space, and $T\in\SL(V)$
+is self-adjoint. To prove the Real Spectral Theorem,
+it suffices to show that $T$ has an eigenvalue. From there,
+the proof is identical to our original proof.
+
+Define the
+complex inner product on $V_\C$ to be
+\begin{align*}
+    \iprod{u+iv,x+iy} = \iprod{u,x}+\iprod{v,y}+
+    (\iprod{v,x}-\iprod{u,y})i
+\end{align*}
+for all $u,v,x,y\in V.$ Then, by the previous problem, \textit{9.B.4},
+we have that $T_\C$ is self-adjoint.
+
+\begin{claim*}
+$\iprod{T_\C(u+iv),u+iv}\in\R$ for all $u,v\in V.$
+\end{claim*}
+\begin{proof}
+We begin with a lemma: if $z\in\C$ and $\overline z=z$ then $z\in\R.$\footnote{
+Proof: let $z=a+bi$ for $a,b\in\R.$ Since $\overline z=z,$
+we have $a-bi=a+bi,$ so $-b=b,$ so $b=0.$ Thus, $z\in\R.$}
+Next, note that
+\begin{align*}
+    \overline{\iprod{T_\C(u+iv),u+iv}}
+    &= \overline{\iprod{Tu+iTv,u+iv}} \\
+    &= \overline{\iprod{Tu,u}+\iprod{Tv,v}+(\iprod{Tv,u}-\iprod{Tu,v})i} \\
+    &= \overline{\iprod{Tu,u}}+
+    \overline{\iprod{Tv,v}}
+    +(\overline{\iprod{Tv,u}}-\overline{\iprod{Tu,v}})
+    (-i) \\
+    &= \iprod{u,Tu}+\iprod{v,Tv}+(\iprod{u,Tv}-\iprod{v,Tu})(-i) \\
+    &= \iprod{u,Tu}+\iprod{v,Tv}+(\iprod{v,Tu}-\iprod{u,Tv})i \\
+    &= \iprod{u+iv,Tu+iTv} \\
+    &= \iprod{u+iv,T_\C(u+iv)} \\
+    &= \iprod{T_\C(u+iv), u+iv}.\qquad\qquad(T_C\text{ is self-adjoint})
+\end{align*}
+Thus, by our lemma, $\iprod{T_\C(u+iv),u+iv}\in\R.$
+\end{proof}
+
+\begin{claim*}
+If $T_\C(u+iv)=\lambda(u+iv)$ for some $u,v\in V$ and $\lambda\in\C$
+then $\lambda\in\R.$
+\end{claim*}
+\begin{proof}
+By the previous claim, the following inner product is real:
+\begin{align*}
+    \iprod{T_\C(u+iv),u+iv} &= \iprod{\lambda(u+iv),u+iv} \\
+                            &= \lambda\iprod{u+iv,u+iv} \\
+                            &= \lambda\norm{u+iv}^2.
+\end{align*}
+Thus, $\lambda\norm{u+iv}^2\in\R.$ Since $\norm{u+iv}^2\in\R,$
+we have $\lambda\in\R.$
+\end{proof}
+
+\begin{claim*}
+$T$ has an eigenvalue.
+\end{claim*}
+\begin{proof}
+By the Complex Spectral Theorem, $T_\C$ has an eigenvalue. Suppose
+\begin{align*}
+    T_\C(u+iv)=\lambda(u+iv)
+\end{align*}
+for some $u,v\in V$ and $\lambda\in\C.$
+By the previous claim, $\lambda\in\R.$
+Furthermore,
+\begin{align*}
+    Tu+iTv=\lambda u+i\lambda v.
+\end{align*}
+Since $\lambda\in\R,$ we can compare real/imaginary parts to get
+\begin{align*}
+Tu=\lambda u\text{ and }Tv=\lambda v.
+\end{align*}
+Since $u+iv\ne 0,$ at least one of $u,v$ is nonzero. Thus, $\lambda$
+is an eigenvalue of $T.$
+\end{proof}
+
+\vspace{0.5in}
+
+\begin{note*}
+You can view the source code for this solution
+\href{https://github.com/thomasbreydo/linalg/blob/main/\pagenum_\probnum_Thomas_Breydo.tex}
+{here}.
+\end{note*}
+
+\end{document}
