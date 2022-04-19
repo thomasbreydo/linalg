@@ -1,0 +1,47 @@
+\documentclass{amsart}
+\usepackage{thomas} % my style file, https://git.io/thomas.sty
+
+
+\newcommand{\pagenum}{306}
+\newcommand{\probnum}{21}
+
+\title{\pagenum.\probnum}
+\author{Thomas\ Breydo}
+
+\begin{document}
+
+\maketitle
+
+\begin{problem*}
+Suppose $V$ is an inner product space. Suppose $T\in\SL(V)$ and
+\begin{align*}
+    \norm{T^*v}\le\norm{Tv}
+\end{align*}
+for every $v\in V.$ Prove that $T$ is normal.
+\end{problem*}
+\begin{note*}
+The problem above fails on infinite-dimensional inner
+product spaces, leading to what are called hyponormal operators,
+which have a well-developed theory.
+\end{note*}
+
+\vspace{0.5in}
+
+We can apply the Gram--Schmidt procedure to a basis of $V$ to produce
+an orthonormal basis of $V$: $e_1,\ldots,e_n.$
+\begin{claim*}
+$\norm{T^*e_1}^2+\cdots+\norm{T^*e_n}^2\le\norm{Te_1}^2+\cdots+\norm{Te_n}^2$
+\end{claim*}
+\begin{proof}
+Damn it Liam posted it first.
+\end{proof}
+
+\vspace{0.5in}
+
+\begin{note*}
+You can view the source code for this solution
+\href{https://github.com/thomasbreydo/linalg/blob/main/\pagenum_\probnum_Thomas_Breydo.tex}
+{here}.
+\end{note*}
+
+\end{document}
