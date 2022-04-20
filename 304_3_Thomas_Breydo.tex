@@ -1,0 +1,158 @@
+\documentclass{amsart}
+\usepackage{thomas} % my style file, https://git.io/thomas.sty
+
+
+\newcommand{\pagenum}{304}
+\newcommand{\probnum}{3}
+
+\title{\pagenum.\probnum}
+\author{Thomas\ Breydo}
+
+\begin{document}
+
+\maketitle
+
+\begin{problem*}
+Suppose $T\in\SL(V)$ has the same matrix with respect to every
+basis of $V.$ Prove that $T$ is a scalar multiple of the
+identity operator.
+\end{problem*}
+
+\vspace{0.5in}
+
+Let $v_1,\ldots,v_n$ be a basis of $V,$ and suppose $1\le i<j\le n.$
+Next, consider the matrix of $T$ with respect to $v_1,\ldots,v_n$:
+\begin{align*}
+\SM(T,(v_1,\ldots,v_n)) =
+    \begin{pmatrix}
+        & \vdots & & \vdots & \\
+       \hdots & A_{ii} & \hdots & A_{ij} & \hdots \\
+                & \vdots & \ddots & \vdots & \\
+       \hdots & A_{ji} & \hdots & A_{jj} & \hdots \\
+              & \vdots & & \vdots &
+    \end{pmatrix}.
+\end{align*}
+For convenience, let's relabel:
+\begin{align*}
+\SM(T,(v_1,\ldots,v_n)) =
+    \begin{pmatrix}
+        & \vdots & & \vdots & \\
+       \hdots & a & \hdots & b & \hdots \\
+                & \vdots & \ddots & \vdots & \\
+       \hdots & c & \hdots & d & \hdots \\
+              & \vdots & & \vdots &
+    \end{pmatrix}.
+\end{align*}
+Recall that the $i^\text{th}$ column corresponds to $Tv_i,$ so
+\begin{align*}
+    Tv_i=\cdots+av_i+\cdots+cv_j+\cdots,
+\end{align*}
+and the $j^\text{th}$ column corresponds to $Tv_j,$ so
+\begin{align*}
+    Tv_j=\cdots+bv_i+\cdots+dv_j+\cdots.
+\end{align*}
+
+\begin{claim*}
+$a=d.$
+\end{claim*}
+\begin{proof}
+If we swap $v_i$ and $v_j$ in the basis, the $i^\text{th}$
+column will correspond to
+\begin{align*}
+Tv_j=\cdots+dv_j+\cdots+bv_i+\cdots,
+\end{align*}
+while the $j^\text{th}$ column will correspond to
+\begin{align*}
+Tv_i=\cdots+cv_j+\cdots+av_i+\cdots.
+\end{align*}
+Thus, under the new basis,
+\begin{align*}
+    \begin{pmatrix}
+        & \vdots & & \vdots & \\
+       \hdots & a & \hdots & b & \hdots \\
+                & \vdots & \ddots & \vdots & \\
+       \hdots & c & \hdots & d & \hdots \\
+              & \vdots & & \vdots &
+    \end{pmatrix}
+    \text{ will become }
+    \begin{pmatrix}
+        & \vdots & & \vdots & \\
+       \hdots & d & \hdots & c & \hdots \\
+                & \vdots & \ddots & \vdots & \\
+       \hdots & b & \hdots & a & \hdots \\
+              & \vdots & & \vdots &
+    \end{pmatrix}.
+\end{align*}
+Since $T$ has the same matrix with respect to
+every basis of $V,$ we see that $a=d.$
+\end{proof}
+
+\begin{claim*}
+$b=c=0.$
+\end{claim*}
+\begin{proof}
+This time, double $v_i$ instead of swapping it with $v_j.$ After
+we double $v_i,$ our new basis will be
+($\ldots,2v_i,\ldots,v_j,\ldots$). Under this new
+basis, the $i^\text{th}$ column will correspond to
+\begin{align*}
+    T(2v_i)=\cdots+a(2v_i)+\cdots+2c(v_j)+\cdots,
+\end{align*}
+and the $j^\text{th}$ column will correspond to
+\begin{align*}
+    T(v_j)=\cdots+\frac12b(2v_i)+\cdots+dv_j+\cdots.
+\end{align*}
+Thus, under the new basis,
+\begin{align*}
+    \begin{pmatrix}
+        & \vdots & & \vdots & \\
+       \hdots & a & \hdots & b & \hdots \\
+                & \vdots & \ddots & \vdots & \\
+       \hdots & c & \hdots & d & \hdots \\
+              & \vdots & & \vdots &
+    \end{pmatrix}
+    \text{ will become }
+    \begin{pmatrix}
+        & \vdots & & \vdots & \\
+       \hdots & a & \hdots & \frac12b & \hdots \\
+                & \vdots & \ddots & \vdots & \\
+       \hdots & 2c & \hdots & d & \hdots \\
+              & \vdots & & \vdots &
+    \end{pmatrix}.
+\end{align*}
+Since $T$ has the same matrix with respect to
+every basis of $V,$ we see that
+\begin{align*}
+    b=\frac12 b\quad\text{and}\quad c=2c.
+\end{align*}
+Thus, $b=c=0.$
+\end{proof}
+
+\begin{claim*}
+    $T$ is a scalar multiple of the identity operator.
+\end{claim*}
+\begin{proof}
+Our first claim implies that entries on the diagonal of
+$\SM(T,(v_1,\ldots,v_n))$ are all pairwise equal. Thus, they
+are all equal. Our second claim implies all other entries
+are zero. Thus,
+\begin{align*}
+    \SM(T,(v_1,\ldots,v_n))=\begin{pmatrix}
+        \lambda & & 0 \\
+                & \ddots & \\
+        0 & & \lambda
+    \end{pmatrix}
+    =\SM(\lambda I)
+\end{align*}
+for some $\lambda\in\F.$
+\end{proof}
+
+\vspace{0.5in}
+
+\begin{note*}
+You can view the source code for this solution
+\href{https://github.com/thomasbreydo/linalg/blob/main/\pagenum_\probnum_Thomas_Breydo.tex}
+{here}.
+\end{note*}
+
+\end{document}
